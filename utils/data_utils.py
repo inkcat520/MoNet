@@ -437,6 +437,13 @@ def expmap2xyz_torch_cmu(expmap):
     xyz = kinematics.fkl_torch_cmu(expmap, parent, offset, rotInd, expmapInd)
     return xyz
 
+def angle_separate(e):
+
+    assert e.size(-1) == 3
+    theta = torch.cos(torch.norm(e, p=2, dim=-1, keepdim=True))
+    expmap = torch.sin(e)
+    out = torch.cat([theta, expmap], dim=-1)
+    return out
 
 def tri_xyz_torch(expmap):
     """
@@ -576,14 +583,6 @@ def axis_angle(v):
     axis = axis.flatten(-2)
     theta = theta.flatten(-2)
     return axis, theta
-
-def angle_separate(e):
-
-    assert e.size(-1) == 3
-    theta = torch.cos(torch.norm(e, p=2, dim=-1, keepdim=True))
-    expmap = torch.sin(e)
-    out = torch.cat([theta, expmap], dim=-1)
-    return out
 
 def expmap_to_quaternion(e):
     """

@@ -3,7 +3,7 @@ import re
 import shutil
 
 from torch.utils.data import Dataset
-from utils.data_utils import expmap_to_euler_torch, expmap_to_quaternion, expmap2rotmat_torch, angle_separate
+from utils.data_utils import expmap_to_euler_torch, angle_separate
 from tqdm import tqdm
 import torch
 import torch.nn as nn
@@ -66,8 +66,6 @@ class Trainer:
         targets = target.unflatten(-1, (-1, 3))
         outputs = angle_separate(outputs)
         targets = angle_separate(targets)
-        # outputs = expmap_to_quaternion(outputs.reshape(-1, 3))
-        # targets = expmap_to_quaternion(targets.reshape(-1, 3))
 
         if self.loss_type == "L1":
             total_loss = self.mae_loss(outputs, targets)
