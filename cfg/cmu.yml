@@ -1,0 +1,20 @@
+batch_size: 64
+epochs: 2000
+seq_len: 50
+pred_len: 25
+eval_interval: 5
+lr: 3.e-4
+weight_decay: 1.e-6
+lr_step: 1000
+gamma: 0.1
+key_point: 38
+linear_n: 48
+nonlinear_n: 4
+patch_size: 2
+d_heads: 16
+d_ff: 256
+d_emb: 64
+drop_out: 0.2
+aug: true # data augment
+loss_type: "L1" # L1 L2
+keep: 5 # ckpt num
