@@ -2,7 +2,6 @@
 
 Code for our paper:  
 **MoNet: Decomposing Motion Trajectories with a Hybrid Network for Human Motion Prediction**  
-Shuaijin Wan, Huaijiang Sun
 
 ## Recommand Dependencies
 * Cuda 11.7
